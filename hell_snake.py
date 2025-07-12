@@ -3,9 +3,11 @@ import constants
 import sys
 from src.controller import Controller
 from src.listener_pynput import PynputKeyListener
+from src.voice_listener import VoiceCommandListener
 from src.loadouts import LoadoutManager
 from src.model import Model
 from src.settings import SettingsManager
+
 
 def main():
     # Settings manager handles app configuration (e.g. hotkeys)
@@ -20,6 +22,8 @@ def main():
     keylistener = PynputKeyListener(controller)
     # Add keylisterner to controller to allow callbacks
     controller.set_keylistener(keylistener)
+    # Voice command listener handles speech commands
+    voice_listener = VoiceCommandListener(controller)
 
     # Initialize our presentation
     if settingsManager.view_framework == constants.VIEW_PYQT5:
@@ -33,6 +37,10 @@ def main():
 
     # Set the view in the controller so it can communicate with the view.
     controller.set_view(view)
+
+    # Start voice command listener after stratagems prepared
+    voice_listener.start()
+
 
 if __name__ == "__main__":
     main()
