@@ -4,6 +4,7 @@ from PyQt5.QtWidgets import QDialog, QTabWidget, QVBoxLayout, QLabel, QGridLayou
 from PyQt5.QtGui import QFont, QIcon, QFontDatabase
 from PyQt5.QtCore import Qt
 from src.view.pyqt5.util import show_capture_key_dialog, DropdownDialog, NumberInputDialog
+from src.view.pyqt5.theme import ThemeManager
 
 class EditConfigDialog(QDialog):
     def __init__(self, controller):
@@ -118,11 +119,26 @@ class EditConfigDialog(QDialog):
         self.view_layout.addLayout(self.view_grid_layout)
 
         self.add_settings_headline(self.view_grid_layout, "View settings")
-        
+
         self.add_key_binding(self.view_grid_layout, "Selected view framework", self.settings.view_framework, False, self.open_view_selector_dialog)
 
         settings_items = self.controller.view.get_settings_items()
         self.populateSettingsItems(self.view_grid_layout, settings_items, self.update_view_settings)
+
+        self.add_settings_headline(self.view_grid_layout, "Appearance")
+
+        theme_names = {
+            constants.THEME_AUTO: "Auto (System)",
+            constants.THEME_LIGHT: "Light",
+            constants.THEME_DARK: "Dark"
+        }
+        theme_name = theme_names.get(self.settings.theme, "Auto (System)")
+        self.add_key_binding(self.view_grid_layout, "Theme", theme_name, False, self.open_theme_selector_dialog)
+
+        self.add_settings_headline(self.view_grid_layout, "Input settings (restart required)")
+
+        listener_name = "evdev (Wayland)" if self.settings.key_listener == constants.LISTENER_EVDEV else "pynput (X11)"
+        self.add_key_binding(self.view_grid_layout, "Key listener", listener_name, False, self.open_listener_selector_dialog)
 
     def open_view_selector_dialog(self):
         items = {
@@ -134,6 +150,34 @@ class EditConfigDialog(QDialog):
 
     def change_selected_view_framework(self, view_framework):
         self.settings.view_framework = view_framework
+        #TODO Trigger a save and restart dialog thing
+
+    def open_theme_selector_dialog(self):
+        items = {
+            constants.THEME_AUTO: 'Auto (System)',
+            constants.THEME_LIGHT: 'Light',
+            constants.THEME_DARK: 'Dark'
+        }
+
+        dialog = DropdownDialog(items, self.change_theme)
+        dialog.exec_()
+
+    def change_theme(self, theme):
+        ThemeManager.set_theme(theme)
+        self.update_view_settings()
+
+    def open_listener_selector_dialog(self):
+        items = {
+            constants.LISTENER_PYNPUT: 'pynput (X11)',
+            constants.LISTENER_EVDEV: 'evdev (Wayland/Linux)'
+        }
+
+        dialog = DropdownDialog(items, self.change_selected_listener)
+        dialog.exec_()
+
+    def change_selected_listener(self, listener):
+        self.settings.key_listener = listener
+        self.update_view_settings()
         #TODO Trigger a save and restart dialog thing
 
     def update_executor_settings(self):
@@ -216,10 +260,11 @@ class EditConfigDialog(QDialog):
         grid_layout.addWidget(self.create_button(callback), row, 2)
 
     def add_settings_headline(self, grid_layout, headline):
+        theme = ThemeManager.get_current_theme()
         headline = QLabel(headline.upper())
         headline.setFixedHeight(35)
         headline.setContentsMargins(20,0,0,0)
-        headline.setStyleSheet("background-color: "+constants.COLOR_SETTINGS_HEADLINE_BACKGROUND)
+        headline.setStyleSheet(f"background-color: {theme.colors['header_bg']}; color: {theme.colors['header_fg']}")
         chakra_petch_bold = QFontDatabase.applicationFontFamilies(1)[0]
         font = QFont(chakra_petch_bold, 12)
         font.setBold(True)
