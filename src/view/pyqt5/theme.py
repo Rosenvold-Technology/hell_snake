@@ -5,6 +5,10 @@ import os
 THEME_AUTO = "auto"
 THEME_LIGHT = "light"
 THEME_DARK = "dark"
+THEME_CATPPUCCIN_LATTE = "catppuccin-latte"
+THEME_CATPPUCCIN_FRAPPE = "catppuccin-frappe"
+THEME_CATPPUCCIN_MACCHIATO = "catppuccin-macchiato"
+THEME_CATPPUCCIN_MOCHA = "catppuccin-mocha"
 
 
 class Theme:
@@ -78,6 +82,122 @@ DARK_THEME = Theme("dark", {
     "scrollbar_handle": "#555555",
 })
 
+# Catppuccin Latte (light)
+CATPPUCCIN_LATTE = Theme("catppuccin-latte", {
+    "window_bg": "#eff1f5",      # Base
+    "window_fg": "#4c4f69",      # Text
+    "menu_bg": "#e6e9ef",        # Mantle
+    "menu_fg": "#4c4f69",        # Text
+    "menu_hover": "#ccd0da",     # Surface0
+    "list_bg": "#eff1f5",        # Base
+    "list_fg": "#4c4f69",        # Text
+    "list_hover": "#dce0e8",     # Crust
+    "list_selected": "#7287fd",  # Lavender
+    "input_bg": "#e6e9ef",       # Mantle
+    "input_fg": "#4c4f69",       # Text
+    "input_border": "#9ca0b0",   # Overlay0
+    "button_bg": "#ccd0da",      # Surface0
+    "button_fg": "#4c4f69",      # Text
+    "button_hover": "#bcc0cc",   # Surface1
+    "button_pressed": "#acb0be", # Surface2
+    "header_bg": "#e6e9ef",      # Mantle
+    "header_fg": "#4c4f69",      # Text
+    "separator": "#9ca0b0",      # Overlay0
+    "armed_bar": "#d20f39",      # Red
+    "disarmed_bar": "#9ca0b0",   # Overlay0
+    "stratagem_bg": "#1f2832",
+    "link": "#1e66f5",           # Blue
+    "scrollbar_bg": "#e6e9ef",   # Mantle
+    "scrollbar_handle": "#9ca0b0", # Overlay0
+})
+
+# Catppuccin Frappé (medium dark)
+CATPPUCCIN_FRAPPE = Theme("catppuccin-frappe", {
+    "window_bg": "#303446",      # Base
+    "window_fg": "#c6d0f5",      # Text
+    "menu_bg": "#292c3c",        # Mantle
+    "menu_fg": "#c6d0f5",        # Text
+    "menu_hover": "#414559",     # Surface0
+    "list_bg": "#303446",        # Base
+    "list_fg": "#c6d0f5",        # Text
+    "list_hover": "#232634",     # Crust
+    "list_selected": "#babbf1",  # Lavender
+    "input_bg": "#292c3c",       # Mantle
+    "input_fg": "#c6d0f5",       # Text
+    "input_border": "#737994",   # Overlay0
+    "button_bg": "#414559",      # Surface0
+    "button_fg": "#c6d0f5",      # Text
+    "button_hover": "#51576d",   # Surface1
+    "button_pressed": "#626880", # Surface2
+    "header_bg": "#292c3c",      # Mantle
+    "header_fg": "#c6d0f5",      # Text
+    "separator": "#737994",      # Overlay0
+    "armed_bar": "#e78284",      # Red
+    "disarmed_bar": "#737994",   # Overlay0
+    "stratagem_bg": "#1f2832",
+    "link": "#8caaee",           # Blue
+    "scrollbar_bg": "#292c3c",   # Mantle
+    "scrollbar_handle": "#737994", # Overlay0
+})
+
+# Catppuccin Macchiato (dark)
+CATPPUCCIN_MACCHIATO = Theme("catppuccin-macchiato", {
+    "window_bg": "#24273a",      # Base
+    "window_fg": "#cad3f5",      # Text
+    "menu_bg": "#1e2030",        # Mantle
+    "menu_fg": "#cad3f5",        # Text
+    "menu_hover": "#363a4f",     # Surface0
+    "list_bg": "#24273a",        # Base
+    "list_fg": "#cad3f5",        # Text
+    "list_hover": "#181926",     # Crust
+    "list_selected": "#b7bdf8",  # Lavender
+    "input_bg": "#1e2030",       # Mantle
+    "input_fg": "#cad3f5",       # Text
+    "input_border": "#6e738d",   # Overlay0
+    "button_bg": "#363a4f",      # Surface0
+    "button_fg": "#cad3f5",      # Text
+    "button_hover": "#494d64",   # Surface1
+    "button_pressed": "#5b6078", # Surface2
+    "header_bg": "#1e2030",      # Mantle
+    "header_fg": "#cad3f5",      # Text
+    "separator": "#6e738d",      # Overlay0
+    "armed_bar": "#ed8796",      # Red
+    "disarmed_bar": "#6e738d",   # Overlay0
+    "stratagem_bg": "#1f2832",
+    "link": "#8aadf4",           # Blue
+    "scrollbar_bg": "#1e2030",   # Mantle
+    "scrollbar_handle": "#6e738d", # Overlay0
+})
+
+# Catppuccin Mocha (darkest)
+CATPPUCCIN_MOCHA = Theme("catppuccin-mocha", {
+    "window_bg": "#1e1e2e",      # Base
+    "window_fg": "#cdd6f4",      # Text
+    "menu_bg": "#181825",        # Mantle
+    "menu_fg": "#cdd6f4",        # Text
+    "menu_hover": "#313244",     # Surface0
+    "list_bg": "#1e1e2e",        # Base
+    "list_fg": "#cdd6f4",        # Text
+    "list_hover": "#11111b",     # Crust
+    "list_selected": "#b4befe",  # Lavender
+    "input_bg": "#181825",       # Mantle
+    "input_fg": "#cdd6f4",       # Text
+    "input_border": "#6c7086",   # Overlay0
+    "button_bg": "#313244",      # Surface0
+    "button_fg": "#cdd6f4",      # Text
+    "button_hover": "#45475a",   # Surface1
+    "button_pressed": "#585b70", # Surface2
+    "header_bg": "#181825",      # Mantle
+    "header_fg": "#cdd6f4",      # Text
+    "separator": "#6c7086",      # Overlay0
+    "armed_bar": "#f38ba8",      # Red
+    "disarmed_bar": "#6c7086",   # Overlay0
+    "stratagem_bg": "#1f2832",
+    "link": "#89b4fa",           # Blue
+    "scrollbar_bg": "#181825",   # Mantle
+    "scrollbar_handle": "#6c7086", # Overlay0
+})
+
 
 def detect_system_theme():
     """
@@ -144,15 +264,22 @@ def detect_system_theme():
 def get_theme(theme_preference):
     """
     Get the theme based on user preference.
-    theme_preference: 'auto', 'light', or 'dark'
+    theme_preference: 'auto', 'light', 'dark', or catppuccin variants
     """
+    theme_map = {
+        THEME_LIGHT: LIGHT_THEME,
+        THEME_DARK: DARK_THEME,
+        THEME_CATPPUCCIN_LATTE: CATPPUCCIN_LATTE,
+        THEME_CATPPUCCIN_FRAPPE: CATPPUCCIN_FRAPPE,
+        THEME_CATPPUCCIN_MACCHIATO: CATPPUCCIN_MACCHIATO,
+        THEME_CATPPUCCIN_MOCHA: CATPPUCCIN_MOCHA,
+    }
+
     if theme_preference == THEME_AUTO:
         system_theme = detect_system_theme()
         return DARK_THEME if system_theme == THEME_DARK else LIGHT_THEME
-    elif theme_preference == THEME_DARK:
-        return DARK_THEME
-    else:
-        return LIGHT_THEME
+
+    return theme_map.get(theme_preference, LIGHT_THEME)
 
 
 def generate_stylesheet(theme):

@@ -130,7 +130,11 @@ class EditConfigDialog(QDialog):
         theme_names = {
             constants.THEME_AUTO: "Auto (System)",
             constants.THEME_LIGHT: "Light",
-            constants.THEME_DARK: "Dark"
+            constants.THEME_DARK: "Dark",
+            constants.THEME_CATPPUCCIN_LATTE: "Catppuccin Latte",
+            constants.THEME_CATPPUCCIN_FRAPPE: "Catppuccin Frappé",
+            constants.THEME_CATPPUCCIN_MACCHIATO: "Catppuccin Macchiato",
+            constants.THEME_CATPPUCCIN_MOCHA: "Catppuccin Mocha",
         }
         theme_name = theme_names.get(self.settings.theme, "Auto (System)")
         self.add_key_binding(self.view_grid_layout, "Theme", theme_name, False, self.open_theme_selector_dialog)
@@ -156,7 +160,11 @@ class EditConfigDialog(QDialog):
         items = {
             constants.THEME_AUTO: 'Auto (System)',
             constants.THEME_LIGHT: 'Light',
-            constants.THEME_DARK: 'Dark'
+            constants.THEME_DARK: 'Dark',
+            constants.THEME_CATPPUCCIN_LATTE: 'Catppuccin Latte',
+            constants.THEME_CATPPUCCIN_FRAPPE: 'Catppuccin Frappé',
+            constants.THEME_CATPPUCCIN_MACCHIATO: 'Catppuccin Macchiato',
+            constants.THEME_CATPPUCCIN_MOCHA: 'Catppuccin Mocha',
         }
 
         dialog = DropdownDialog(items, self.change_theme)
